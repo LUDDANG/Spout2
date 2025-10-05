@@ -89,7 +89,7 @@
 //		26.12.22 - Add missing SPOUT_LOG_NONE to SpoutLibLogLevel
 //				   Rebuild release VS2022 - 32/64 bit /MD
 //				   Spout Version 2.007.009
-//		17.03.23 - SpoutLibrary.h - add redefinitons to avoid include of GL.h 
+//		17.03.23 - SpoutLibrary.h - add redefinitons to avoid include of GL.h
 //				   Spout.cpp ReceiveSenderData - if there is a valid D3D11 format, use it.
 //		18.03.23 - For MingW compatibility
 //				     Remove old style include guard from header
@@ -116,22 +116,22 @@
 /*
 		Copyright (c) 2016-2024, Lynn Jarvis. All rights reserved.
 
-		Redistribution and use in source and binary forms, with or without modification, 
+		Redistribution and use in source and binary forms, with or without modification,
 		are permitted provided that the following conditions are met:
 
-		1. Redistributions of source code must retain the above copyright notice, 
+		1. Redistributions of source code must retain the above copyright notice,
 		   this list of conditions and the following disclaimer.
 
-		2. Redistributions in binary form must reproduce the above copyright notice, 
-		   this list of conditions and the following disclaimer in the documentation 
+		2. Redistributions in binary form must reproduce the above copyright notice,
+		   this list of conditions and the following disclaimer in the documentation
 		   and/or other materials provided with the distribution.
 
-		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"	AND ANY 
-		EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
-		OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE	ARE DISCLAIMED. 
-		IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
-		INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-		PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"	AND ANY
+		EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+		OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE	ARE DISCLAIMED.
+		IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+		INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+		PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
 		INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 		LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 		OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -163,14 +163,14 @@
 //	http://www.codeproject.com/Articles/28969/HowTo-Export-C-classes-from-a-DLL
 //
 // Group: Building the library
-// 
+//
 // The "VS2017" folder contains Visual Studio projects to build the dll.
 //
 // The Spout SDK source files should be located in a folder "SpoutGL" two levels above the project folder.
-// 
+//
 // Open the SpoutLibrary solution, change to "Release" and build the project.
 // SpoutLibrary.dll and SpoutLibrary.lib will be in the Win32\Release or x64\Release folder.
-// 
+//
 // Also refer to "Building the libraries.pdf" for details on building the libraries using CMake.
 //
 // Group: Building applications with the library
@@ -178,7 +178,7 @@
 // o Include SpoutLibrary.h in your application header file.
 // o Include SpoutLibrary.lib in your project for the linker.
 // o Include SpoutLibrary.dll in the application executable folder.
-// 
+//
 //
 // All functions are the same as described for in the Spout SDK documentation.
 //
@@ -188,29 +188,29 @@
 //
 //
 // 1) Include SpoutLibrary.h in your application header file
-// 
+//
 // --- Code
 // #include "SpoutLibrary.h"
 // ---
-// 
+//
 // 2) create a spout sender object pointer
-// 
+//
 // --- Code
 // SPOUTLIBRARY * sender;
 // ---
-// 
+//
 // 3) Create an instance of the library
-// 
+//
 // --- Code
 // sender = GetSpout();
 // ---
-// 
+//
 // 4) Use the object as usual :
-// 
+//
 // --- Code
 // sender->SendTexture(...) etc.
 // ---
-// 
+//
 // Compare with the graphics sender example using the Spout SDK source files.
 
 
@@ -242,13 +242,13 @@ private: // Spout SDK functions
 	//
 	//    - If compatible, update the shared textures and GL/DX interop
 	//    - If not compatible, re-create the class DirectX shared texture to the new size
-	//    - Update the sender and class variables	
+	//    - Update the sender and class variables
 	//
 
 	// Function: SetSenderName
 	// Set name for sender creation
 	//
-	//     If no name is specified, the executable name is used. 
+	//     If no name is specified, the executable name is used.
 	//     Thereafter, all sending functions create and update a sender
 	//     based on the size passed and the name that has been set
 	void SetSenderName(const char* sendername = nullptr);
@@ -268,7 +268,7 @@ private: // Spout SDK functions
 	//
 	//   The fbo must be currently bound
 	//   The sending texture can be larger than the size that the sender is set up for
-	//   For example, if the application is using only a portion of the allocated texture space,  
+	//   For example, if the application is using only a portion of the allocated texture space,
 	//   such as for Freeframe plugins. (The 2.006 equivalent is DrawToSharedTexture)
 	//
 	bool SendFbo(GLuint FboID, unsigned int width, unsigned int height, bool bInvert = true);
@@ -293,7 +293,7 @@ private: // Spout SDK functions
 	// Send pixel image
 	//
 	//     SendImage creates a shared texture using image pixels as the source
-	//     instead of an OpenGL texture. The format of the image to be sent is RGBA 
+	//     instead of an OpenGL texture. The format of the image to be sent is RGBA
 	//     by default but can be a different OpenGL format, for example GL_RGB or GL_BGRA_EXT.
 	//
 	//     The invert flag is optional and false by default.
@@ -301,27 +301,27 @@ private: // Spout SDK functions
 	//     As for SendTexture, the ID of a currently bound fbo can be passed in.
 	//
 	bool SendImage(const unsigned char* pixels, unsigned int width, unsigned int height, GLenum glFormat = GL_RGBA, bool bInvert = false);
-	
+
 	// Function: GetName
 	// Sender name
 	const char * GetName();
-	
+
 	// Function: GetWidth
 	// Sender width
 	unsigned int GetWidth();
-	
+
 	// Function: GetHeight
 	// Sender height
 	unsigned int GetHeight();
-	
+
 	// Function: GetFps
 	// Sender frame rate
 	double GetFps();
-	
+
 	// Function: GetFrame
 	// Sender frame number
 	long GetFrame();
-	
+
 	// Function: GetHandle
 	// Sender share handle
 	HANDLE GetHandle();
@@ -333,7 +333,7 @@ private: // Spout SDK functions
 
 	// Function: GetGLDX
 	// Sender sharing compatibility.
-	// Returns true if the sender graphics hardware is 
+	// Returns true if the sender graphics hardware is
 	// compatible with NVIDIA NV_DX_interop2 extension
 	bool GetGLDX();
 
@@ -343,7 +343,7 @@ private: // Spout SDK functions
 	//
 	// Receiving functions
 	//
-	// ReceiveTexture and ReceiveImage 
+	// ReceiveTexture and ReceiveImage
 	//
 	//		- Connect to a sender
 	//
@@ -360,7 +360,7 @@ private: // Spout SDK functions
 	// Specify sender for connection
 	//
 	//   - If a name is specified, the receiver will not connect to any other unless the user selects one.
-	//   - If that sender closes, the receiver will wait for the nominated sender to open. 
+	//   - If that sender closes, the receiver will wait for the nominated sender to open.
 	//   - If no name is specified, the receiver will connect to the active sender.
 	void SetReceiverName(const char * SenderName = nullptr);
 
@@ -391,7 +391,7 @@ private: // Spout SDK functions
 	//   but an fbo ID is necessary if it is currently bound, then that binding
 	//   is restored. Otherwise the binding is lost.
 	bool ReceiveTexture(GLuint TextureID = 0, GLuint TextureTarget = 0, bool bInvert = false, GLuint HostFbo = 0);
-	
+
 	// Function: ReceiveImage
 	// Copy the sender texture to image pixels.
 	//
@@ -405,53 +405,53 @@ private: // Spout SDK functions
 	//
 	//    As for ReceiveTexture, the ID of a currently bound fbo should be passed in.
 	bool ReceiveImage(unsigned char *pixels, GLenum glFormat = GL_RGBA, bool bInvert = false, GLuint HostFbo = 0);
-	
+
 	// Function: IsUpdated
 	// Query whether the sender has changed.
 	//
-	//   Must be checked at every cycle before receiving data. 
+	//   Must be checked at every cycle before receiving data.
 	//
 	//   If this is not done, the receiving functions fail.
 	bool IsUpdated();
-	
+
 	// Function: IsConnected
 	// Query sender connection.
 	//
-	//   If the sender closes, receiving functions return false,  
+	//   If the sender closes, receiving functions return false,
 	//   but connection can be tested at any time.
 	bool IsConnected();
-	
+
 	// Function: IsFrameNew
 	// Query received frame status
 	//
-	//   The receiving texture or pixel buffer is refreshed if the sender has produced a new frame  
+	//   The receiving texture or pixel buffer is refreshed if the sender has produced a new frame
 	//   This can be queried to process texture data only for new frames
 	bool IsFrameNew();
-	
+
 	// Function: GetSenderName
 	// Get sender name
 	const char * GetSenderName();
-	
+
 	// Function: GetSenderWidth
 	// Get sender width
 	unsigned int GetSenderWidth();
-	
+
 	// Function: GetSenderHeight
 	// Get sender height
 	unsigned int GetSenderHeight();
-	
+
 	// Function: GetSenderFormat
 	// Get sender DirectX texture format
 	DWORD GetSenderFormat();
-	
+
 	// Function: GetSenderFps
 	// Get sender frame rate
 	double GetSenderFps();
-	
+
 	// Function: GetSenderFrame
 	// Get sender frame number
 	long GetSenderFrame();
-	
+
 	// Function: GetSenderHandle
 	// Received sender share handle
 	HANDLE GetSenderHandle();
@@ -459,7 +459,7 @@ private: // Spout SDK functions
 	// Function: GetSenderTexture
 	// Received sender texture
 	ID3D11Texture2D* GetSenderTexture();
-	
+
 	// Function: GetSenderCPU
 	// Received sender sharing mode.
 	// Returns true if the sender is using CPU methods
@@ -467,7 +467,7 @@ private: // Spout SDK functions
 
 	// Function: GetSenderGLDX
 	// Received sender sharing compatibility.
-	//     Returns true if the sender graphics hardware is 
+	//     Returns true if the sender graphics hardware is
 	//     compatible with NVIDIA NV_DX_interop2 extension
 	bool GetSenderGLDX();
 
@@ -479,7 +479,7 @@ private: // Spout SDK functions
 	// Function: GetSenderList
 	// Return a list of current senders
 	std::vector<std::string> GetSenderList();
-	
+
 	// Function: SelectSender
 	// Open sender selection dialog
 	void SelectSender();
@@ -491,15 +491,15 @@ private: // Spout SDK functions
 	// Function: SetFrameCount
 	// Enable or disable frame counting globally
 	void SetFrameCount(bool bEnable);
-	
+
 	// Function: DisableFrameCount
 	// Disable frame counting specifically for this application
 	void DisableFrameCount();
-	
+
 	// Function: IsFrameCountEnabled
 	// Return frame count status
 	bool IsFrameCountEnabled();
-	
+
 	// Function: HoldFps
 	// Frame rate control
 	void HoldFps(int fps);
@@ -507,11 +507,11 @@ private: // Spout SDK functions
 	// Function: GetRefreshRate
 	// Get system refresh rate
 	double GetRefreshRate();
-	
+
 	// Function: SetFrameSync
-	// Signal sync event 
+	// Signal sync event
 	void SetFrameSync(const char* SenderName);
-	
+
 	// Function: WaitFrameSync
 	// Wait or test for a sync event
 	bool WaitFrameSync(const char *SenderName, DWORD dwTimeout = 0);
@@ -539,13 +539,13 @@ private: // Spout SDK functions
 	//
 	//   Notes for synchronisation.
 	//
-	//   If used before sending and after receiving, the data will be 
-	//   associated with the same video frame, but frames may be missed 
+	//   If used before sending and after receiving, the data will be
+	//   associated with the same video frame, but frames may be missed
 	//   if the receiver has a lower frame rate than the sender.
 	//
 	//   If strict synchronization is required, the data sharing functions
 	//   should be used in combination with event signal functions. The sender
-	//   frame rate will be matched exactly to that of the receiver and the 
+	//   frame rate will be matched exactly to that of the receiver and the
 	//   receiver will not miss any frames.
 	//
 	//      - void SetFrameSync(const char* SenderName);
@@ -558,7 +558,7 @@ private: // Spout SDK functions
 	//
 	//   SetFrameSync
 	//   After receiving a texture, rendering the result and reading data
-	//   a receiver should signal that it is ready to read another. 
+	//   a receiver should signal that it is ready to read another.
 	//
 	//   EnableFrameSync
 	//   Enable or disable frame sync during operation
@@ -622,20 +622,20 @@ private: // Spout SDK functions
 	// Function: EnableSpoutLog
 	// Enable logging to the console.
 	//
-	// Logs are displayed in a console window.  
+	// Logs are displayed in a console window.
 	// Useful for program development.
 	void EnableSpoutLog();
 
 	// Function: EnableSpoutLogFile
 	// Enable logging to a file with optional append.
 	//
-	// You can instead, or additionally to a console window,  
-	// specify output to a text file with the extension of your choice  
+	// You can instead, or additionally to a console window,
+	// specify output to a text file with the extension of your choice
 	// Example : EnableSpoutLogFile("Sender.log");
-	// The log file is re-created every time the application starts unless you specify to append to the existing one :  
+	// The log file is re-created every time the application starts unless you specify to append to the existing one :
 	// Example : EnableSpoutLogFile("Sender.log", true);
-	// The file is saved in the %AppData% folder unless you specify the full path :  
-	//    C:>Users>username>AppData>Roaming>Spout   
+	// The file is saved in the %AppData% folder unless you specify the full path :
+	//    C:>Users>username>AppData>Roaming>Spout
 	// You can find and examine the log file after the application has run.
 	void EnableSpoutLogFile(const char *filename, bool append = false);
 
@@ -682,7 +682,7 @@ private: // Spout SDK functions
 	// Function: SpoutMessageBox
 	// MessageBox dialog with optional timeout.
 	//
-	// Used where a Windows MessageBox would interfere with the application GUI.  
+	// Used where a Windows MessageBox would interfere with the application GUI.
 	// The dialog closes itself if a timeout is specified.
 	int SpoutMessageBox(const char * message, DWORD dwMilliseconds = 0);
 
@@ -746,29 +746,29 @@ private: // Spout SDK functions
 	// Function: ReadDwordFromRegistry
 	// Read subkey DWORD value
 	bool ReadDwordFromRegistry(HKEY hKey, const char *subkey, const char *valuename, DWORD *pValue);
-	
+
 	// Function: WriteDwordToRegistry
 	// Write subkey DWORD value
 	bool WriteDwordToRegistry(HKEY hKey, const char *subkey, const char *valuename, DWORD dwValue);
-	
+
 	// Function: ReadPathFromRegistry
 	// Read subkey character string
 	bool ReadPathFromRegistry(HKEY hKey, const char *subkey, const char *valuename, char *filepath);
-	
+
 	// Function: WritePathToRegistry
 	// Write subkey character string
 	bool WritePathToRegistry(HKEY hKey, const char *subkey, const char *valuename, const char *filepath);
-	
+
 	// Function: RemovePathFromRegistry
 	// Remove subkey value name
 	bool RemovePathFromRegistry(HKEY hKey, const char *subkey, const char *valuename);
-	
+
 	// Function: RemoveSubKey
 	// Delete a subkey and its values.
-	//   It must be a subkey of the key that hKey identifies, but it cannot have subkeys.  
-	//   Note that key names are not case sensitive.  
+	//   It must be a subkey of the key that hKey identifies, but it cannot have subkeys.
+	//   Note that key names are not case sensitive.
 	bool RemoveSubKey(HKEY hKey, const char *subkey);
-	
+
 	// Function: FindSubKey
 	// Find subkey
 	bool FindSubKey(HKEY hKey, const char *subkey);
@@ -793,7 +793,7 @@ private: // Spout SDK functions
 	// Function: GetCurrentModule
 	// Get the module handle of an executable or dll
 	HMODULE GetCurrentModule();
-	
+
 	// ---------------------------------------------------------
 	// Function: GetExeVersion
 	// Get executable or dll version
@@ -809,16 +809,6 @@ private: // Spout SDK functions
 	// Get executable or dll name
 	std::string GetExeName();
 
-	// ---------------------------------------------------------
-	// Function: RemovePath
-	// Remove path and return the file name
-	void RemovePath(std::string& path);
-
-	// ---------------------------------------------------------
-	// Function: RemoveName
-	// Remove file name and return the path
-	void RemoveName(std::string& path);
-
 	//
 	// Group: Timing utilities
 	//
@@ -830,7 +820,7 @@ private: // Spout SDK functions
 	// Function: EndTiming
 	// Return timing interval
 	double EndTiming();
-	
+
 	//
 	// Group: OpenGL shared texture
 	//
@@ -838,15 +828,15 @@ private: // Spout SDK functions
 	// Function: IsInitialized
 	// Initialization status
 	bool IsInitialized();
-	
+
 	// Function: BindSharedTexture
 	// Bind OpenGL shared texture
 	bool BindSharedTexture();
-	
+
 	// Function: UnBindSharedTexture
 	// Un-bind OpenGL shared texture
 	bool UnBindSharedTexture();
-	
+
 	// Function: GetSharedTextureID
 	// OpenGL shared texture ID
 	GLuint GetSharedTextureID();
@@ -858,23 +848,23 @@ private: // Spout SDK functions
 	// Function: GetSenderCount
 	// Number of senders
 	int  GetSenderCount();
-	
+
 	// Function: GetSender
 	// Sender item name in the sender names list
 	bool GetSender(int index, char* sendername, int MaxSize = 256);
-	
+
 	// Function: FindSenderName
 	// Find a sender in the sender names list
 	bool FindSenderName(const char* sendername);
-	
+
 	// Function: GetSenderInfo
 	// Sender information
 	bool GetSenderInfo(const char* sendername, unsigned int &width, unsigned int &height, HANDLE &dxShareHandle, DWORD &dwFormat);
-	
+
 	// Function: GetActiveSender
 	// Current active sender
 	bool GetActiveSender(char* Sendername);
-	
+
 	// Function: SetActiveSender
 	// Set sender as active
 	bool SetActiveSender(const char* Sendername);
@@ -889,28 +879,28 @@ private: // Spout SDK functions
 	// Function: GetBufferMode
 	// Get user buffering mode
 	bool GetBufferMode();
-	
+
 	// Function: SetBufferMode
 	// Set application buffering mode
 	void SetBufferMode(bool bActive = true);
-	
+
 	// Function: GetBuffers
 	// Get user number of pixel buffers
 	int GetBuffers();
-	
+
 	// Function: SetBuffers
 	// Set application number of pixel buffers
 	void SetBuffers(int nBuffers);
-	
+
 	// Function: GetMaxSenders
 	// Get user Maximum senders allowed
 	int GetMaxSenders();
-	
+
 	// Function: SetMaxSenders
 	// Set user Maximum senders allowed
 	void SetMaxSenders(int maxSenders);
 
-	
+
 	//
 	// Group: 2.006 compatibility
 	//
@@ -920,48 +910,48 @@ private: // Spout SDK functions
 	// Function: CreateSender
 	// Create a sender
 	bool CreateSender(const char *Sendername, unsigned int width, unsigned int height, DWORD dwFormat = 0);
-	
+
 	// Function: UpdateSender
 	// Update a sender
 	bool UpdateSender(const char* Sendername, unsigned int width, unsigned int height);
-	
+
 	// Function: CreateReceiver
 	// Create receiver connection
 	bool CreateReceiver(char* Sendername, unsigned int &width, unsigned int &height);
-	
+
 	// Function: CheckReceiver
 	// Check receiver connection
 	bool CheckReceiver(char* Sendername, unsigned int &width, unsigned int &height, bool &bConnected);
-	
+
 	// Function: GetDX9
 	// Get user DX9 mode
 	bool GetDX9();
-	
+
 	// Function: SetDX9
 	// Set user DX9 mode
 	bool SetDX9(bool bDX9 = true);
-	
+
 	// Function: GetMemoryShareMode
 	// Get user memory share mode
 	bool GetMemoryShareMode();
-	
+
 	// Function: SetMemoryShareMode
 	// Set user memory share mode
 	bool SetMemoryShareMode(bool bMem = true);
-	
+
 	// Function: GetCPUmode
 	// Get user CPU mode
 	bool GetCPUmode();
-	
+
 	// Function: SetCPUmode
 	// Set user CPU mode
 	bool SetCPUmode(bool bCPU);
-	
+
 	// Function: GetShareMode
 	// Get user share mode
 	//  0 - texture, 1 - memory, 2 - CPU
 	int GetShareMode();
-	
+
 	// Function: SetShareMode
 	// Set user share mode
 	//  0 - texture, 1 - memory, 2 - CPU
@@ -979,11 +969,11 @@ private: // Spout SDK functions
 	// Function: GetAutoShare
 	// Get auto GPU/CPU share depending on compatibility
 	bool GetAutoShare();
-	
+
 	// Function: SetAutoShare
 	// Set auto GPU/CPU share depending on compatibility
 	void SetAutoShare(bool bAuto = true);
-	
+
 	// Function: IsGLDXready
 	// OpenGL texture share compatibility
 	bool IsGLDXready();
@@ -997,19 +987,19 @@ private: // Spout SDK functions
 	// Function: GetNumAdapters
 	// The number of graphics adapters in the system
 	int GetNumAdapters();
-	
+
 	// Function: GetAdapterName
 	// Get adapter item name
 	bool GetAdapterName(int index, char *adaptername, int maxchars);
-	
+
 	// Function: AdapterName
 	// Current adapter name
 	char * AdapterName();
-	
+
 	// Function: GetAdapter
 	// Get adapter index
 	int GetAdapter();
-	
+
 	//
 	// Group: Graphics preference
 	//
@@ -1017,7 +1007,7 @@ private: // Spout SDK functions
 	//
 	// Performance prefrence settings are available from Windows 10
 	// April 2018 update "Redstone 4" (Version 1803, build 17134) and later.
-	// Windows 10 SDK required included in Visual Studio 2017 ver.15.7 
+	// Windows 10 SDK required included in Visual Studio 2017 ver.15.7
 	//
 #ifdef NTDDI_WIN10_RS4
 
@@ -1082,7 +1072,7 @@ private: // Spout SDK functions
 	// Function: IsPreferenceAvailable()
 	// Availability of Windows graphics preference settings.
 	//
-	// Settings are available from Windows 10 April 2018 update 
+	// Settings are available from Windows 10 April 2018 update
 	// (Version 1803, build 17134) and later.
 	bool IsPreferenceAvailable();
 
@@ -1104,11 +1094,11 @@ private: // Spout SDK functions
 	//   Not used if applications already have an OpenGL context.
 	//   Always call CloseOpenGL afterwards.
 	bool CreateOpenGL();
-	
+
 	// Function: CloseOpenGL
 	// Close OpenGL window
 	bool CloseOpenGL();
-	
+
 	// Function: CopyTexture
 	// Copy OpenGL texture with optional invert
 	//   Textures must be the same size
@@ -1141,7 +1131,7 @@ private: // Spout SDK functions
 
 	bool OpenDirectX();
 	void CloseDirectX();
-	
+
 	// Function: OpenDirectX11
 	// Initialize and prepare DirectX 11
 	bool OpenDirectX11(void * pDevice = nullptr);
@@ -1669,16 +1659,6 @@ std::string SPOUTImpl::GetExeName()
 	return spoututils::GetExeName();
 }
 
-void SPOUTImpl::RemovePath(std::string& path)
-{
-	return spoututils::RemovePath(path);
-}
-
-void SPOUTImpl::RemoveName(std::string& path)
-{
-	return spoututils::RemoveName(path);
-}
-
 void SPOUTImpl::StartTiming()
 {
 	spoututils::StartTiming();
@@ -1791,7 +1771,7 @@ bool SPOUTImpl::UpdateSender(const char* Sendername, unsigned int width, unsigne
 	return spout->UpdateSender(Sendername, width, height);
 }
 
-// 
+//
 // Receiver
 //
 bool SPOUTImpl::CreateReceiver(char* Sendername, unsigned int &width, unsigned int &height)

@@ -343,10 +343,6 @@ struct SPOUTLIBRARY
 	virtual std::string GetExePath() = 0;
 	// Get executable or dll name
 	virtual std::string GetExeName() = 0;
-	// Remove path and return the file name
-	virtual void RemovePath(std::string& path) = 0;
-	// Remove file name and return the path
-	virtual void RemoveName(std::string& path) = 0;
 
 	//
 	// Timing utilities
